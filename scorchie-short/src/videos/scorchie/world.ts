@@ -169,7 +169,7 @@ const sightLines = (): Ray[] => {
   const out: Ray[] = [];
   for (const s of SHOTS) for (let f = s.a - 8; f < s.b + 8; f += 2) {
     const c = camAt(s.id, Math.max(0, f)), o = V(...c.pos), look = V(...c.look);
-    const fw = look.clone().sub(o), len = Math.min(fw.length(), 60);
+    const fw = look.clone().sub(o), len = Math.min(fw.length(), 420);
     fw.normalize();
     const rt = fw.clone().cross(V(0, 1, 0)).normalize(), up = rt.clone().cross(fw);
     const ty = Math.tan((c.fov * Math.PI) / 360), tx = ty * (9 / 16);
@@ -504,6 +504,7 @@ export class World {
     // ---- beam + hot spot + glare on the face ----
     const bk = beamAt(id, f);
     this.beam.visible = this.spot.visible = this.glare.visible = bk > 0.01 && s.place === "street";
+    this.glare.visible = this.glare.visible && cam.position.distanceTo(V(0, 72, frontZ(72))) > 90;
     if (this.beam.visible) {
       const src = V(SPOT[0] - 2, 72, frontZ(72) + 0.5), dst = V(SPOT[0], 0.0, SPOT[2]);
       const L2 = src.distanceTo(dst);
@@ -572,6 +573,6 @@ export class World {
   }
 }
 /** per-shot sun overrides (az from the lens axis, el): front-light the tower wides, side-light the street */
-const SUN_AZ: Record<number, number> = { 2: 140, 9: 150, 12: 140, 13: 130, 14: 120 };
+const SUN_AZ: Record<number, number> = { 2: 140, 12: 140, 13: 130, 14: 120 };
 const SUN_EL: Record<number, number> = { 2: 40, 12: 42, 14: 55 };
 void facadeHD;

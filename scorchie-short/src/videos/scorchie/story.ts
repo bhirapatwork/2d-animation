@@ -136,7 +136,7 @@ const S2b = (f: number) => { const k = smooth((f - 268) / 80); return { pos: [-3
 const S2c = (f: number) => zoom([-230, 75, 0], [0, 78, TF + 4], 40, pushK(f, 355, 0.002, 0.005, 30));
 // shot 3: he parks (camera on the north pavement looking across the street) -> low behind the car, up at the tower
 const S3a = (f: number) => dolly([-6, 1.7, 9.5], [-1, 1.2, -3.5], pushK(f, 403, 0.0018), { fov: 44 });
-const S3b = (f: number) => zoom([8.6, 0.6, -5.9], [0, 19, 12], 62, pushK(f, 522, 0.0025, 0.005, 30), { roll: 0.035 });
+const S3b = (f: number) => zoom([9.5, 0.5, -6.6], [-6, 10, 6], 66, pushK(f, 522, 0.0025, 0.005, 30), { roll: 0.035 });
 // shot 4: an hour later he strolls back along the pavement with a coffee
 const S4a = (f: number) => dolly([1.6, 1.45, -6.5], [-6, 1.3, -5.8], pushK(f, 560, 0.003), { fov: 40 });
 // shot 5: mirror insert, badge insert, panels + the owner
@@ -148,23 +148,23 @@ const S6a = track({ pos: [-24, 1.7, 2.5], look: [-17, 1.6, -8] , fov: 44 }, { po
 const S6b = (f: number) => dolly([-6.5, 1.5, -5.6], [-9.2, 1.0, -8], pushK(f, 897, 0.003, 0.006, 30), { fov: 40, roll: 0.035 });
 // shot 7: the reporter walks out with the egg -> ground close-up: crack, splat, fry
 const S7a = (f: number) => dolly([-7.6, 1.45, -1.4], [-3.4, 1.0, -6.0], pushK(f, 940, 0.0025), { fov: 42 });
-const S7b = (f: number) => dolly([-2.9, 0.75, -3.9], [-2.4, 0.05, -5.75], pushK(f, 1005, 0.0025), { fov: 40, roll: 0.03 });
+const S7b = (f: number) => dolly([-2.75, 0.6, -4.5], [-2.4, 0.08, -5.75], pushK(f, 1005, 0.0025), { fov: 40, roll: 0.03 });
 const S7c = (f: number) => dolly([-2.55, 0.55, -4.75], [-2.4, 0.02, -5.75], pushK(f, 1052, 0.003, 0.006, 30), { fov: 38, roll: -0.03 });
 // shot 8: the developers hand over an envelope
-const S8a = (f: number) => zoom([0.6, 1.65, -7.6], [0.5, 1.25, -5.2], 50, pushK(f, 1096, 0.0025));
+const S8a = (f: number) => dolly([-4.8, 1.55, -4.6], [1.1, 1.15, -6.1], pushK(f, 1096, 0.0025), { fov: 47 });
 // shot 9: tiny developers at the foot of the huge tower -> high overhead on the tiny car
-const S9a = (f: number) => { const k = smooth((f - 1200) / 110); return zoom([-1.5, 0.9, -7.6], [0, 6 + 84 * k, frontZ(6 + 84 * k) - 6 * (1 - k)], 56, pushK(f, 1180, 0.0012)); };
-const S9b = (f: number) => dolly([4, 26, -10.5], [1.2, 0, -3.6], pushK(f, 1311, 0.002, 0.005, 30), { fov: 40 });
+const S9a = (f: number) => { const k = smooth((f - 1200) / 110); return zoom([-1.5, 0.9, -6.6], [0, 6 + 84 * k, frontZ(6 + 84 * k) - 6 * (1 - k)], 56, pushK(f, 1180, 0.0012)); };
+const S9b = (f: number) => dolly([10, 15, 5], [1.2, 0, -4.2], pushK(f, 1311, 0.002, 0.005, 30), { fov: 40 });
 // shot 10: flat window: rays come in and go straight back
 const [px, , pz] = PANE, [sx, , sz] = SPOON;
-const S10a = (f: number) => dolly([px - 7.5, 2.3, pz + 7.0], [px - 1.6, 1.6, pz], pushK(f, 1383, 0.0022), { fov: 46 });
+const S10a = (f: number) => dolly([px - 6.5, 2.2, pz + 6.4], [px - 0.9, 1.6, pz], pushK(f, 1383, 0.0022), { fov: 46 });
 // shot 11: glide over to the spoon; rays converge on one spot (a paper on a crate smokes)
 const S11a = (f: number) => dolly([sx - 7.4, 2.4, sz + 6.4], [sx - 0.8, 1.5, sz], pushK(f, 1502, 0.0022), { fov: 46 });
 const S11b = (f: number) => dolly([sx - 3.6, 1.35, sz + 2.6], [sx - 1.2, 1.0, sz], pushK(f, 1613, 0.003, 0.006, 30), { fov: 40, roll: 0.035 });
 // shot 12: "160 metres tall, out of glass": full face -> glass close -> the beam onto the parking space
 const S12a = (f: number) => zoom([70, 35, -190], [0, 78, 10], 44, pushK(f, 1659, 0.0018, 0.004, 30));
 const S12b = (f: number) => dolly([-26, 72, -30], [0, 76, frontZ(76)], pushK(f, 1754, 0.003), { fov: 40, roll: -0.035 });
-const S12c = (f: number) => dolly([16, 9.5, -22], [1.2, 3.2, -3], pushK(f, 1786, 0.0022, 0.005, 30), { fov: 46 });
+const S12c = (f: number) => dolly([22, 6.5, -0.5], [1.0, 5.5, -3.2], pushK(f, 1786, 0.0022, 0.005, 30), { fov: 50 });
 // shot 13: builders on a cradle bolt the fins -> wide of the shaded face -> cool street
 const FY = 112;
 const S13a = (f: number) => dolly([-14, FY + 2.5, frontZ(FY) - 13], [0, FY, frontZ(FY) + 1], pushK(f, 1852, 0.0025), { fov: 44 });
@@ -174,7 +174,7 @@ const S13c = (f: number) => dolly([-6.5, 1.6, 1.8], [0.5, 1.2, -5.2], pushK(f, 1
 const TOP = TOWER.h;
 const S14a = (f: number) => { const k = glide((f - 2042) / 70); return { pos: [36, TOP - 40 + 75 * k, -70 + 10 * k] as V3, look: [0, TOP - 25 + 35 * k, 18] as V3, fov: 44, roll: 0 }; };
 const S14b = (f: number) => dolly([-11, TOP + 3.2, 16], [2, TOP + 2.6, 32], pushK(f, 2115, 0.002), { fov: 50 });
-const S14c = (f: number) => dolly([2.4, TOP + 1.9, 28.2], [3.6, TOP + 2.5, 31.3], pushK(f, 2145, 0.0025, 0.005, 30), { fov: 42, roll: 0.03 });
+const S14c = (f: number) => dolly([1.5, TOP + 1.45, 27.4], [3.6, TOP + 2.05, 31.3], pushK(f, 2145, 0.0025, 0.005, 30), { fov: 46, roll: 0.03 });
 
 const CAMS: Record<number, Key[]> = {
   1: [{ f: 0, s: S1a }, { f: 46, cut: true, s: S1b }, { f: 79, cut: true, s: S1c }],
@@ -233,7 +233,7 @@ export const DOF: Dof[] = [
   { f: 897, cInf: 11 },                  // shopkeeper MS
   { f: 940, cInf: 8 },                   // reporter
   { f: 1005, cInf: 14 },                 // egg close-ups
-  { f: 1096, cInf: 10, focus: () => [0.3, 1.55, -5.6] },
+  { f: 1096, cInf: 10, focus: () => [0.4, 1.6, -5.9] },
   { f: 1180, cInf: 0 },                  // tower / overhead
   { f: 1387, cInf: 6 },                  // plaza
   { f: 1613, cInf: 12 },                 // spoon focus close

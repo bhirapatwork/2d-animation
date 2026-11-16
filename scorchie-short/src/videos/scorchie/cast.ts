@@ -274,7 +274,7 @@ const wavy = (u: number) => (p: Pen) => {
   for (let k = 0; k < 4; k++) {
     const pts: [number, number][] = [];
     for (let i = 0; i <= 20; i++) pts.push([40 + k * 60 + 10 * Math.sin(i * 0.9 + u * 12 + k), 380 - i * 17]);
-    p.line(pts, "rgba(255,248,228,0.16)", 3, false);
+    p.line(pts, "rgba(255,248,228,0.12)", 3, false);
   }
 };
 const flame = (u: number) => (p: Pen) => {
@@ -307,7 +307,7 @@ const owner = (cam: CamInfo, out: Stage, f: number, id: number) => {
     put(cam, out, 1, OWNER, "own", f, { x: cx - 2.2, z: -5.4, expr: "dazed", facing: 1 });
     fx(out, "cupDown", 300, 160, cupDown, cx - 1.5, 0.02, -4.95, 0.75, 0.4, { flat: true, rot: 0.5 });
   } else if (id === 8) {
-    put(cam, out, 1, OWNER, "own", f, { x: cx + 0.7, z: -5.5, expr: f > 1140 ? "relief_open" : "dazed", facing: -1 });
+    put(cam, out, 1, OWNER, "own", f, { x: cx + 1.0, z: -6.6, expr: f > 1140 ? "relief_open" : "dazed", facing: -1 });
   } else if (id === 9 || id === 12) {
     put(cam, out, 1, OWNER, "own", f, { x: cx - 2.4, z: -5.3, expr: "dazed" });
   } else if (id === 13) {
@@ -353,11 +353,11 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     if (id === 13 && f >= 1986) put(cam, out, 3, REPORTER, "rep", f, { x: -4.2, z: -6.2, expr: "pained", prop: "pan", facing: 1 });
     // developers
     if (id === 8) {
-      put(cam, out, 4, DEV1, "dev1", f, { x: CAR[0] - 1.3, z: -5.7, expr: "smile", prop: f > 1128 ? "envelope" : null, facing: 1 });
-      put(cam, out, 5, DEV2, "dev2", f, { x: CAR[0] - 2.4, z: -6.3, expr: "smile_closed", facing: 1 });
+      put(cam, out, 4, DEV1, "dev1", f, { x: CAR[0] - 0.9, z: -5.3, expr: "smile", prop: f > 1128 ? "envelope" : null, facing: 1 });
+      put(cam, out, 5, DEV2, "dev2", f, { x: CAR[0] - 2.2, z: -6.7, expr: "smile_closed", facing: 1 });
     }
     if (id === 9) {
-      put(cam, out, 4, DEV1, "dev1", f, { x: -0.9, z: -5.0, expr: f < 1311 ? "smile" : "nervous" });
+      put(cam, out, 4, DEV1, "dev1", f, { x: -0.9, z: -4.9, expr: f < 1311 ? "smile" : "nervous" });
       put(cam, out, 5, DEV2, "dev2", f, { x: 0.2, z: -5.3, expr: f < 1311 ? "grin" : "nervous" });
     }
     // builders on the cradle bolting the fins
