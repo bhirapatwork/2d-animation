@@ -287,8 +287,8 @@ const fx = (out: Stage, key: string, cw: number, ch: number, draw: (p: Pen) => v
 
 // ---- places (all on the south pavement unless said) ----
 const PZ = -5.7; // pavement walking line
-const SHOPKEEP: [number, number][] = [[-20.2, -8.55], [-13.4, -8.55], [-9.2, -8.5]];
-const REP_DOOR: [number, number] = [-6.4, -8.4], REP_SPOT: [number, number] = [-2.75, -6.05], EGG: V3 = [-2.4, 0, -5.75];
+const SHOPKEEP: [number, number][] = [[-20.2, -7.55], [-13.4, -7.6], [-9.2, -7.55]];
+const REP_DOOR: [number, number] = [-6.4, -7.7], REP_SPOT: [number, number] = [-2.75, -6.05], EGG: V3 = [-2.4, 0, -5.75];
 
 const owner = (cam: CamInfo, out: Stage, f: number, id: number) => {
   const cx = CAR[0];
@@ -301,8 +301,8 @@ const owner = (cam: CamInfo, out: Stage, f: number, id: number) => {
     put(cam, out, 1, OWNER, "own", f, { x, z: PZ, expr: "whistle", prop: "cup", dir: [1, 0], walk: 1.3 });
   } else if (id === 5) {
     const shock = f >= 734;
-    put(cam, out, 1, OWNER, "own", f, { x: cx - 2.2, z: -5.4, expr: shock ? "shock" : "nervous", prop: shock ? null : "cup", facing: 1 });
-    if (shock) fx(out, "cupDown", 300, 160, cupDown, cx - 1.5, 0.02, -4.95, 0.75, 0.4, { flat: true, rot: 0.5 });
+    put(cam, out, 1, OWNER, "own", f, { x: cx - 2.4, z: -4.65, expr: shock ? "shock" : "nervous", prop: shock ? null : "cup", facing: 1 });
+    if (shock) fx(out, "cupDown", 300, 160, cupDown, cx - 1.7, 0.02, -4.4, 0.75, 0.4, { flat: true, rot: 0.5 });
   } else if (id === 6) {
     put(cam, out, 1, OWNER, "own", f, { x: cx - 2.2, z: -5.4, expr: "dazed", facing: 1 });
     fx(out, "cupDown", 300, 160, cupDown, cx - 1.5, 0.02, -4.95, 0.75, 0.4, { flat: true, rot: 0.5 });
@@ -328,7 +328,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       put(cam, out, 10 + k, SHOPS[k], "shop" + k, f, { x, z, expr, wave: id === 6 && k === 1 ? q(Math.sin(t * 7), 20) : undefined, facing: k === 2 ? -1 : 0 });
     });
     if (id === 6 || id === 7 || id === 8) SHOPKEEP.forEach(([x], k) => {
-      fx(out, "scorch", 300, 300, scorch, x + 0.9, 0.025, -7.6, 1.6, 1.1, { flat: true, rot: k });
+      fx(out, "scorch", 300, 300, scorch, x + 0.9, 0.025, -7.4, 1.6, 1.1, { flat: true, rot: k });
       const u = q(((t * 0.6 + k * 0.33) % 1), 30);
       fx(out, `smoke${u}`, 300, 300, smoke(u), x + 0.9, 0.9, -7.5, 1.4, 1.4, { soft: true });
     });

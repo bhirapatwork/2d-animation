@@ -16,9 +16,18 @@
 - No GPU: final 2K render will be slow (estimate hours).
 - Kenney GLB props missing (public/bridge/kenney/*.glb 404) — template falls back to none.
 
+5. Shot plan + world: src/videos/scorchie/ (story.ts shots/cams/DOF timed to words.json, world.ts street + tower +
+   car melt + beam + plaza + fins + roof garden, cast.ts characters, Scorchie.tsx composition "ScorchieShort", 2190 f).
+   Reused unchanged from the bridge template: ink.ts, lensblur.ts, grade.ts, shade.ts, lights.ts, cardshade.ts, paint.ts;
+   toon.ts gained props (cup, egg, pan, envelope, spanner); build.ts exports setSight/inTheWay.
+6. Sound: audio/score_s.py (original score), audio/sfx_s.py (84 synthesized events), audio/mix_s.py
+   (voice unchanged, music -10 LU / SFX -16 LU vs voice, -3 dB duck, master -15 LUFS / -1.2 dBTP) -> audio/out/mix.wav.
+   Run with the scratch venv python (numpy + scipy).
+
+## Commands
+- Stills: scripts/stills.sh out/scorchie/x_ 20,450 0.5
+- Video:  REMOTION_TMP=<tmp> node scripts/render.mjs out/scorchie/video.mp4 1.3333 [from-to] [concurrency]
+- Mux:    ffmpeg -i video.mp4 -i audio/out/mix.wav -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 256k final.mp4
+
 ## Next
-5. Copy src/videos/bridge -> src/videos/scorchie, new composition ScorchieShort, TOTAL = 2188 f (72.9 s).
-   Shot plan: hook (melted Jaguar), City skyline + curved tower, man parks, mirror/badge/panels melt inserts,
-   shops scorch, reporter fries egg, luckily/unluckily (cheque vs tower), flat window vs spoon diagram,
-   giant spoon tower beam on parking space, sunshade fins bolted on, crane up to glass-roof garden.
-6-11. World, characters, post, sound, look checks, final render (per skill pipeline).
+- Look checks on all shots, fix framing; final render; QA (scripts/short_qa.py); deliver.

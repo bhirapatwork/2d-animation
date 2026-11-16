@@ -142,7 +142,7 @@ const S4a = (f: number) => dolly([1.6, 1.45, -6.5], [-6, 1.3, -5.8], pushK(f, 56
 // shot 5: mirror insert, badge insert, panels + the owner
 const S5a = (f: number) => dolly([MIRROR[0] + 1.25, 1.25, MIRROR[2] - 1.35], [MIRROR[0], MIRROR[1] - 0.1, MIRROR[2]], pushK(f, 610, 0.003, 0.006, 30), { fov: 36 });
 const S5b = (f: number) => dolly([BADGE[0] + 1.3, 1.4, BADGE[2] - 1.1], [BADGE[0], BADGE[1] - 0.05, BADGE[2]], pushK(f, 664, 0.003, 0.006, 30), { fov: 36, roll: -0.035 });
-const S5c = (f: number) => dolly([cx - 0.5, 1.25, -7.6], [cx - 0.6, 0.75, cz - 1.0], pushK(f, 718, 0.0025, 0.005, 30), { fov: 46 });
+const S5c = (f: number) => dolly([cx + 4.2, 1.25, -5.2], [cx - 1.8, 0.95, -3.7], pushK(f, 718, 0.0025, 0.005, 30), { fov: 44 });
 // shot 6: along the shop row (tracking on the road)
 const S6a = track({ pos: [-24, 1.7, 2.5], look: [-17, 1.6, -8] , fov: 44 }, { pos: [-6, 1.7, 2.5], look: [1, 1.5, -8], fov: 44 }, 811, 905);
 const S6b = (f: number) => dolly([-6.5, 1.5, -5.6], [-9.2, 1.0, -8], pushK(f, 897, 0.003, 0.006, 30), { fov: 40, roll: 0.035 });
@@ -228,7 +228,7 @@ export const DOF: Dof[] = [
   { f: 565, cInf: 11 },                  // owner strolls back (focus = look)
   { f: 610, cInf: 14, focus: () => MIRROR },
   { f: 664, cInf: 14, focus: () => BADGE },
-  { f: 718, cInf: 10, focus: () => [cx - 2.2, 1.55, -5.4] }, // owner's eyes
+  { f: 718, cInf: 10, focus: () => [cx - 2.4, 1.6, -4.65] }, // owner's eyes
   { f: 811, cInf: 0 },                   // shop row track
   { f: 897, cInf: 11 },                  // shopkeeper MS
   { f: 940, cInf: 8 },                   // reporter
