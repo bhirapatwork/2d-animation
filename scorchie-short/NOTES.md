@@ -31,3 +31,9 @@
 
 ## Next
 - Look checks on all shots, fix framing; final render; QA (scripts/short_qa.py); deliver.
+
+## Delivered (2026-11-16 19:35)
+- out/scorchie/final/scorchie_final.mp4 (not in git: 165 MB) — 1440x2560, 2190 f, 73.0 s, -15.0 LUFS, -1.1 dBFS peak.
+- QA: no black / white / frozen frames; pops = planned in-shot cuts + egg-landing kick.
+- Known small issues: owner out of frame ~f500-522; reporter briefly missing ~f970; shot 7 close-ups bright (luma .86).
+- Render time on this CPU-only box: ~4.5 h (6.6-10 s/frame at 2K, concurrency 2). Crash fix: guarded ink dispose on crossfade.
